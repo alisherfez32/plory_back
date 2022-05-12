@@ -1,10 +1,10 @@
 from django.db import models
 
-from Cities.models import Countries
+from Cities.models import ListOfCities
 
 
 class CostOfLiving(models.Model):
-    country = models.OneToOneField(Countries, unique=True, related_name='cost_of_living', on_delete=models.CASCADE)
+    city = models.OneToOneField(ListOfCities, unique=True, related_name='cost_of_living', on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
     water = models.DecimalField(max_digits=12, decimal_places=2)
     coffee = models.DecimalField(max_digits=12, decimal_places=2)
@@ -21,5 +21,5 @@ class CostOfLiving(models.Model):
         ordering = ['-date_added', ]
 
     def __str__(self):
-        q = str(self.country)
+        q = str(self.city)
         return q

@@ -13,4 +13,9 @@ urlpatterns = [
     path('api/v1/', include('Transport.urls')),
     path('api/v1/', include('Language.urls')),
     path('api/v1/', include('Apps.urls')),
+    path('api/v1/', include('Score.urls')),
+    path('api/v1/', include('Visit.urls')),
+    path('api/v1/', include('Rent.urls')),
+    path('api/v1/', include('IMAGES.urls')),
+    path('api/v1/', include('Search.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

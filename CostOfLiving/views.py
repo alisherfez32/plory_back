@@ -17,14 +17,14 @@ class ListCostOfLiving(APIView):
 
 
 class CountryCostOfLiving(APIView):
-    def get_object(self, country_slug):
+    def get_object(self, city_slug):
         try:
-            q = country_slug.capitalize()
-            return CostOfLiving.objects.get(country__name=q)
+            q = city_slug.capitalize()
+            return CostOfLiving.objects.get(city__name=q)
         except CostOfLiving.DoesNotExist:
             raise Http404
 
-    def get(self, request, country_slug, format=None):
-        costs_in_country = self.get_object(country_slug)
+    def get(self, request, city_slug, format=None):
+        costs_in_country = self.get_object(city_slug)
         serializer = CostOfLivingsSerializer(costs_in_country)
         return Response(serializer.data)

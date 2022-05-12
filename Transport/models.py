@@ -1,6 +1,5 @@
 from django.db import models
 
-from django.template.defaultfilters import slugify
 from Cities.models import Countries
 
 

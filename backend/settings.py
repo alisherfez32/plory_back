@@ -32,12 +32,19 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
 
+    'taggit',
+
     'Cities',
     'Foods',
     'CostOfLiving',
     'Transport',
     'Language',
     'Apps',
+    'Score',
+    'Visit',
+    'Rent',
+    'IMAGES',
+    'Search',
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",

@@ -1,6 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
-
+from taggit.managers import TaggableManager
 
 class AirStatus(models.Model):
     name = models.CharField(max_length=50)
@@ -56,11 +56,13 @@ class Countries(models.Model):
     location = models.ForeignKey(Continents, on_delete=models.CASCADE, default='Asia', blank=True)
     capital = models.ForeignKey(ListOfCities, related_name='capital', on_delete=models.CASCADE, )
     list_cities = models.ManyToManyField(ListOfCities, )
+    tag = TaggableManager()
 
     class Meta:
         ordering = ('name',)
 
     def save(self, *args, **kwargs):  # new
+        self.search = self.tag
         if not self.country_slug:
             self.country_slug = slugify(self.name)
         return super().save(*args, **kwargs)
@@ -81,7 +83,8 @@ class Cities(models.Model):
     status = models.ForeignKey(AirStatus, related_name='status_of_air', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
-
+    tag = TaggableManager()
+    
     class Meta:
         ordering = ['-date_added', ]
 
@@ -101,4 +104,3 @@ class Cities(models.Model):
     def get_absolute_url(self):
         g = str(self.country).lower()
         return f'/{g}/{self.citi_main_slug}'
-
