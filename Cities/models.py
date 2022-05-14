@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from taggit.managers import TaggableManager
 
+
 class AirStatus(models.Model):
     name = models.CharField(max_length=50)
 
@@ -84,7 +85,7 @@ class Cities(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     tag = TaggableManager()
-    
+
     class Meta:
         ordering = ['-date_added', ]
 

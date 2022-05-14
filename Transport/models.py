@@ -1,6 +1,7 @@
 from django.db import models
 
 from Cities.models import Countries
+from taggit.managers import TaggableManager
 
 
 class TransportStatus(models.Model):
@@ -23,6 +24,8 @@ class Transport(models.Model):
     description = models.TextField(null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     book = models.CharField(max_length=1000, blank=True)
+
+    tag = TaggableManager()
 
     class Meta:
         ordering = ['-date_added', ]

@@ -1,6 +1,7 @@
 from django.db import models
 
 from Cities.models import ListOfCities
+from taggit.managers import TaggableManager
 
 
 class CostOfLiving(models.Model):
@@ -16,6 +17,8 @@ class CostOfLiving(models.Model):
     coke = models.DecimalField(max_digits=12, decimal_places=2)
     bigmac_index = models.DecimalField(max_digits=12, decimal_places=2)
     mid_restaurant = models.DecimalField(max_digits=12, decimal_places=2)
+
+    tag = TaggableManager()
 
     class Meta:
         ordering = ['-date_added', ]

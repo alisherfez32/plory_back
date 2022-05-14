@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.db import models
 
 from django.core.validators import MinValueValidator, MaxValueValidator
+from taggit.managers import TaggableManager
 
 PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
 
@@ -78,6 +79,8 @@ class Score(models.Model):
                                          validators=PERCENTAGE_VALIDATOR)
     status = models.ForeignKey(ScoreStatus, related_name='score_status', on_delete=models.CASCADE)
     note = models.TextField(null=True)
+
+    tag = TaggableManager()
 
     class Meta:
         ordering = ['-date_added', ]

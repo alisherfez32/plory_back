@@ -1,6 +1,7 @@
 from django.db import models
 
 from Cities.models import ListOfCities
+from taggit.managers import TaggableManager
 
 
 class FilterBy(models.Model):
@@ -23,6 +24,7 @@ class Visit(models.Model):
     tags = models.ManyToManyField(FilterBy, )
     description = models.TextField(null=True)
     best_time_togo = models.TextField(null=True)
+    tag = TaggableManager()
 
     class Meta:
         ordering = ['-date_added', ]

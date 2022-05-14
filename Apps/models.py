@@ -2,6 +2,7 @@ from django.db import models
 
 from Cities.models import Countries
 from django.template.defaultfilters import slugify
+from taggit.managers import TaggableManager
 
 
 class CommonApps(models.Model):
@@ -35,13 +36,12 @@ class CountryApps(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     apps_for_what = models.TextField(blank=True, null=True)
     apps_and_websites = models.ManyToManyField(CommonApps, )
-    search = models.TextField(blank=True, default='', editable=False)
+    tag = TaggableManager()
 
     class Meta:
         ordering = ['-date_added', ]
 
     def save(self, *args, **kwargs):  # new
-        self.search = self.apps_for_what + ' ' + ' '
         if not self.slug:
             self.slug = slugify(self.country)
         return super().save(*args, **kwargs)

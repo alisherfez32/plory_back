@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from Cities.models import Countries
+from taggit.managers import TaggableManager
 
 
 class CountryFood(models.Model):
@@ -11,6 +12,8 @@ class CountryFood(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     country = models.ForeignKey(Countries, related_name='food', on_delete=models.CASCADE)
+    tag = TaggableManager()
+
 
     class Meta:
         ordering = ['-date_added', ]

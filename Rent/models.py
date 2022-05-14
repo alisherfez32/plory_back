@@ -1,6 +1,7 @@
 from django.db import models
 
 from Cities.models import ListOfCities
+from taggit.managers import TaggableManager
 
 
 class Status(models.Model):
@@ -33,6 +34,7 @@ class Rent(models.Model):
     notes = models.TextField(null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    tag = TaggableManager()
 
     class Meta:
         ordering = ['-date_added', ]

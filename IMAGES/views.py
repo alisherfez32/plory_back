@@ -31,16 +31,16 @@ class CountryImages(APIView):
 
 
 class CityImages(APIView):
-    def get_object(self, country_slug, city_slug):
+    def get_object(self, city_slug):
         try:
-            q = country_slug.capitalize()
+            # q = country_slug.capitalize()
             c = city_slug.capitalize()
-            return Images.objects.filter(country__name=q).filter(city__name=c)
+            return Images.objects.filter(city__name=c)
         except Images.DoesNotExist:
             raise Http404
 
-    def get(self, request, country_slug, city_slug, format=None):
-        images_in_country = self.get_object(country_slug, city_slug)
+    def get(self, request, city_slug, format=None):
+        images_in_country = self.get_object(city_slug)
         serializer = ImageSerializer(images_in_country, many=True)
         return Response(serializer.data)
 
