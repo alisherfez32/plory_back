@@ -9,9 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-SECRET_KEY = 'django-insecure-!4@is-xp5+mfc^ign&hgit0z2_r7o$n7manz=_o3e7o*76)9=@'
+# SECRET_KEY = 'django-insecure-!4@is-xp5+mfc^ign&hgit0z2_r7o$n7manz=_o3e7o*76)9=@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
@@ -23,10 +23,7 @@ else:
 
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split('')
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,12 +57,21 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8000",
     "http://18.156.129.57",
+    "http://localhost",
+    "http://35.158.203.11",
+    "http://localhost:1337",
+    "http://localhost:80",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:1337",
+    "http://localhost:80",
     "http://127.0.0.1:8000",
     "http://18.156.129.57",
     "http://localhost:8080",
+    "http://localhost",
+    "http://35.158.203.11",
+
 ]
 
 MIDDLEWARE = [
@@ -73,7 +79,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -144,10 +150,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR, "mediafiles"
 
 
 # Default primary key field type
