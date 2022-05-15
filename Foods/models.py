@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
 from Cities.models import Countries
@@ -14,13 +15,12 @@ class CountryFood(models.Model):
     country = models.ForeignKey(Countries, related_name='food', on_delete=models.CASCADE)
     tag = TaggableManager()
 
-
     class Meta:
         ordering = ['-date_added', ]
 
     def get_image(self):
         if self.image:
-            return 'http://127.0.0.1:8000' + self.image.url
+            return settings.MEDIA_HOST + self.image.url
         return ''
 
     def save(self, *args, **kwargs):  # new

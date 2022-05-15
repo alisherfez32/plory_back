@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 from Cities.models import Countries, ListOfCities
@@ -18,7 +19,7 @@ class Images(models.Model):
 
     def get_image(self):
         if self.image:
-            return 'http://127.0.0.1:8000' + self.image.url
+            return settings.MEDIA_HOST + self.image.url
         return ''
 
     def __str__(self):

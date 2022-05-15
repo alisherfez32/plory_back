@@ -10,7 +10,6 @@ class CostOfLivingsSerializer(serializers.ModelSerializer):
         model = CostOfLiving
 
         fields = (
-            "id",
             "country",
             "water",
             "coffee",

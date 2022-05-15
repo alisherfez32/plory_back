@@ -53,10 +53,10 @@ def search(request):
     if query:
         countries = Countries.objects.filter(Q(tag__name=query))
         cities = Cities.objects.filter(Q(tag__name=query))
-        apps = CountryApps.objects.filter(Q(tag__name=query))
+        # apps = CountryApps.objects.filter(Q(tag__name=query))
         costs = CostOfLiving.objects.filter(Q(tag__name=query))
         foods = CountryFood.objects.filter(Q(tag__name=query))
-        languages = Languages.objects.filter(Q(tag__name=query))
+        # languages = Languages.objects.filter(Q(tag__name=query))
         rents = Rent.objects.filter(Q(tag__name=query))
         scores = Score.objects.filter(Q(tag__name=query))
         transports = Transport.objects.filter(Q(tag__name=query))
@@ -64,10 +64,10 @@ def search(request):
 
         ct_serializer = CountrySerializer(countries, many=True)
         city_serializer = CityDetailedSerializer(cities, many=True)
-        app_serializer = CountryAppSerializer(apps, many=True)
+        # app_serializer = CountryAppSerializer(apps, many=True)
         cost_serializer = CostOfLivingsSerializer(costs, many=True)
         food_serializer = FoodsSerializer(foods, many=True)
-        lang_srz = LanguageSerializer(languages, many=True)
+        # lang_srz = LanguageSerializer(languages, many=True)
         rent_srz = RentSerializer(rents, many=True)
         score_srz = ScoreSerializer(scores, many=True)
         trans_srz = TransportsSerializer(transports, many=True)
@@ -76,10 +76,10 @@ def search(request):
         context = {
             "countries": ct_serializer.data,
             "cities": city_serializer.data,
-            "apps": app_serializer.data,
+            # "apps": app_serializer.data,
             "costs": cost_serializer.data,
             "foods": food_serializer.data,
-            "langs": lang_srz.data,
+            # "langs": lang_srz.data,
             "rents": rent_srz.data,
             "scores": score_srz.data,
             "transports": trans_srz.data,

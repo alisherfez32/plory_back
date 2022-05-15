@@ -11,7 +11,6 @@ class ScoreSerializer(serializers.ModelSerializer):
         model = Score
 
         fields = (
-            "id",
             "city",
             "status",
             "quality_of_life",
