@@ -15,25 +15,15 @@ class Status(models.Model):
         return self.name
 
 
-class Company(models.Model):
-    name = models.CharField(unique=True, max_length=200)
-    url_cp = models.URLField()
-
-    class Meta:
-        ordering = ['-name', ]
-
-    def __str__(self):
-        return self.name
-
-
 class Rent(models.Model):
-    name = models.CharField(max_length=200)
+    name_of_company = models.CharField(max_length=200)
     city = models.ForeignKey(ListOfCities, related_name='rent', on_delete=models.CASCADE)
-    url_of_rent = models.URLField()
     status = models.ForeignKey(Status, related_name='rent_status', on_delete=models.CASCADE)
-    company = models.ForeignKey(Company, related_name='rent_company', on_delete=models.CASCADE)
-    notes = models.TextField(null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    hotel = models.URLField(default='')
+    guest_house = models.URLField(default='')
+    apartment = models.URLField(default='')
+    house = models.URLField(default='')
     date_added = models.DateTimeField(auto_now_add=True)
     tag = TaggableManager()
 
@@ -46,5 +36,5 @@ class Rent(models.Model):
         return ''
 
     def __str__(self):
-        q = self.name + ' / ' + str(self.city)
+        q = self.name_of_company + ' / ' + str(self.city)
         return q

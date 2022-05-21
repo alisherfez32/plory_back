@@ -4,13 +4,13 @@ from .models import CostOfLiving
 
 
 class CostOfLivingsSerializer(serializers.ModelSerializer):
-    country = serializers.StringRelatedField()
+    city = serializers.StringRelatedField()
 
     class Meta:
         model = CostOfLiving
 
         fields = (
-            "country",
+            "city",
             "water",
             "coffee",
             "dinner",

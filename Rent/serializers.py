@@ -5,7 +5,6 @@ from .models import Rent
 
 class RentSerializer(serializers.ModelSerializer):
     city = serializers.StringRelatedField()
-    company = serializers.StringRelatedField()
     status = serializers.StringRelatedField()
 
     class Meta:
@@ -14,10 +13,11 @@ class RentSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "city",
-            "name",
-            "company",
             "status",
-            "notes",
+            "name_of_company",
             "get_image",
-            "url_of_rent",
+            "hotel",
+            "guest_house",
+            "apartment",
+            "house"
         )

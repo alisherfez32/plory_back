@@ -49,6 +49,7 @@ from Visit.serializers import VisitSerializer
 @api_view(['POST'])
 def search(request):
     query = request.data.get('query', '')
+    query = query.lower()
 
     if query:
         countries = Countries.objects.filter(Q(tag__name=query))

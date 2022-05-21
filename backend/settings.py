@@ -14,7 +14,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECRET_KEY = 'django-insecure-!4@is-xp5+mfc^ign&hgit0z2_r7o$n7manz=_o3e7o*76)9=@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
+
+# DEBUG = True
 
 if DEBUG:
     MEDIA_HOST = "http://127.0.0.1:8000"
@@ -52,6 +55,7 @@ INSTALLED_APPS = [
     'Rent',
     'IMAGES',
     'Search',
+    'EatPlace',
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
@@ -79,7 +83,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

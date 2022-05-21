@@ -65,14 +65,14 @@ class CountryCityDetailed(APIView):
 
 
 class CityDetailed(APIView):
-    def get_object(self, capitalize, city_slug):
+    def get_object(self, city_slug):
         try:
-            q = capitalize.capitalize()
-            return Cities.objects.get(country__name=q, citi_main_slug=city_slug)
+            # q = capitalize.capitalize()
+            return Cities.objects.get(citi_main_slug=city_slug)
         except Cities.DoesNotExist:
             raise Http404
 
-    def get(self, request, country_name, city_slug, format=None):
-        city_detailed_1 = self.get_object(country_name, city_slug)
+    def get(self, request, city_slug, format=None):
+        city_detailed_1 = self.get_object(city_slug)
         serializer = CityDetailedSerializer(city_detailed_1)
         return Response(serializer.data)
