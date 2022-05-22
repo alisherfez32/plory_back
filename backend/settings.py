@@ -65,6 +65,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://35.158.203.11",
     "http://localhost:1337",
     "http://localhost:80",
+    "http://stepbook.co",
+    "https://stepbook.co",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -75,6 +77,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080",
     "http://localhost",
     "http://35.158.203.11",
+    "http://stepbook.co",
+    "https://stepbook.co",
 
 ]
 
