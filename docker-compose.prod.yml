@@ -16,16 +16,22 @@ services:
 
   nginx:
     build: ./nginx
+    image: jonasal/nginx-certbot:latest
+    env_file:
+      - .env.nginx
     ports:
      - 80:80
-#     - 443:443
+     - 443:443
     volumes:
       - static_volume:/home/back/web/staticfiles
       - media_volume:/home/back/web/media
+      - nginx_secrets:/etc/letsencrypt
+      - ./nginx/user_conf.d:/etc/nginx/user_conf.d
     depends_on:
      - web
 
 volumes:
   static_volume:
   media_volume:
+  nginx_secrets:
 
