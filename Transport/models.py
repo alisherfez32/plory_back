@@ -24,7 +24,7 @@ class Transport(models.Model):
     status = models.ForeignKey(TransportStatus, related_name='transport_status', on_delete=models.CASCADE)
     description = models.TextField(null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    book = models.CharField(max_length=1000, blank=True)
+    # book = models.CharField(max_length=1000, blank=True)
 
     tag = TaggableManager()
 

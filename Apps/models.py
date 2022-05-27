@@ -6,11 +6,25 @@ from django.template.defaultfilters import slugify
 from taggit.managers import TaggableManager
 
 
+class Filters(models.Model):
+    name = models.CharField(unique=True, max_length=200)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-date_added', ]
+
+    def __str__(self):
+        return self.name
+
+
 class CommonApps(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(blank=True)
+    filter_by = models.ManyToManyField(Filters, blank=True, null=True, )
     description = models.TextField()
-    url = models.URLField()
+    url = models.URLField(blank=True)
+    ios_url = models.URLField(blank=True, null=True)
+    android_url = models.URLField(blank=True, null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 

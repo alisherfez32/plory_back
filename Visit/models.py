@@ -15,16 +15,29 @@ class FilterBy(models.Model):
         return self.tag
 
 
+class District(models.Model):
+    name = models.CharField(max_length=200)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-date_added', ]
+
+    def __str__(self):
+        return self.name
+
+
 class Visit(models.Model):
     name = models.CharField(max_length=100)
     city = models.ForeignKey(ListOfCities, related_name='visit', on_delete=models.CASCADE)
     url_on_map = models.URLField()
+    district = models.ForeignKey(District, null=True, blank=True, default=1, on_delete=models.CASCADE)
     entry_fee = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(FilterBy, )
     description = models.TextField(null=True)
-    best_time_togo = models.TextField(null=True)
+
+    # best_time_togo = models.TextField(null=True)
     tag = TaggableManager()
 
     class Meta:

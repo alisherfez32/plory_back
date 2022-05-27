@@ -17,5 +17,5 @@ class TransportsSerializer(serializers.ModelSerializer):
             "status",
             "description",
             "get_image",
-            "book"
+            # "book"
         )

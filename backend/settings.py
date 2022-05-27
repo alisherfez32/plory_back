@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'EatPlace',
 ]
 CORS_ALLOWED_ORIGINS = [
+    "http://stepbook.co",
+    "https://stepbook.co",
     "http://localhost:8080",
     "http://127.0.0.1:8000",
     "http://18.156.129.57",
@@ -65,11 +67,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://35.158.203.11",
     "http://localhost:1337",
     "http://localhost:80",
-    "http://stepbook.co",
-    "https://stepbook.co",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
+    "http://stepbook.co",
+    "https://stepbook.co",
     "http://localhost:1337",
     "http://localhost:80",
     "http://127.0.0.1:8000",
@@ -77,9 +79,6 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080",
     "http://localhost",
     "http://35.158.203.11",
-    "http://stepbook.co",
-    "https://stepbook.co",
-
 ]
 
 MIDDLEWARE = [

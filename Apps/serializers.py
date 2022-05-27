@@ -11,6 +11,8 @@ class CommonAppSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "url",
+            "ios_url",
+            "android_url",
             "description",
             "get_image",
         )
