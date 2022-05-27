@@ -20,7 +20,7 @@ services:
     env_file:
       - .env.nginx
     ports:
-     - 80:80
+#     - 80:80
      - 443:443
     volumes:
       - static_volume:/home/back/web/staticfiles
