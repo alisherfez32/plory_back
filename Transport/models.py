@@ -22,7 +22,7 @@ class Transport(models.Model):
     country = models.ForeignKey(Countries, related_name='transport', on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
     status = models.ForeignKey(TransportStatus, related_name='transport_status', on_delete=models.CASCADE)
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     # book = models.CharField(max_length=1000, blank=True)
 

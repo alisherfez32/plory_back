@@ -34,7 +34,7 @@ class EatPlaces(models.Model):
     city = models.ForeignKey(ListOfCities, related_name='eat_places', on_delete=models.CASCADE)
     district = models.ForeignKey(District, on_delete=models.CASCADE)
     filter_by = models.ManyToManyField(Filters, blank=True, null=True, )
-    price = models.DecimalField(max_digits=6, decimal_places=0)
+    price = models.DecimalField(max_digits=20, decimal_places=0)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     url = models.URLField()
     date_added = models.DateTimeField(auto_now_add=True)

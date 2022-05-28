@@ -5,3 +5,4 @@ __pycache__
 
 ../myenv
 *myenv
+db.sqlite3

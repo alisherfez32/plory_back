@@ -21,7 +21,7 @@ class CommonApps(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(blank=True)
     filter_by = models.ManyToManyField(Filters, blank=True, null=True, )
-    description = models.TextField()
+    description = models.TextField(max_length=35)
     url = models.URLField(blank=True)
     ios_url = models.URLField(blank=True, null=True)
     android_url = models.URLField(blank=True, null=True)
@@ -49,7 +49,7 @@ class CountryApps(models.Model):
     country = models.OneToOneField(Countries, on_delete=models.CASCADE)
     slug = models.SlugField(blank=True, default=country)
     date_added = models.DateTimeField(auto_now_add=True)
-    apps_for_what = models.TextField(blank=True, null=True)
+    apps_for_what = models.TextField(blank=True, null=True, )
     apps_and_websites = models.ManyToManyField(CommonApps, )
     tag = TaggableManager()
 
