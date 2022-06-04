@@ -18,18 +18,19 @@ class Filters(models.Model):
 
 
 class CommonApps(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(blank=True)
     filter_by = models.ManyToManyField(Filters, blank=True, null=True, )
-    description = models.TextField(max_length=35)
+    description = models.TextField(max_length=50)
     url = models.URLField(blank=True)
     ios_url = models.URLField(blank=True, null=True)
     android_url = models.URLField(blank=True, null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def get_image(self):
         if self.image:

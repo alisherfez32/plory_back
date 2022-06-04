@@ -24,12 +24,13 @@ class Transport(models.Model):
     status = models.ForeignKey(TransportStatus, related_name='transport_status', on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
     # book = models.CharField(max_length=1000, blank=True)
 
     tag = TaggableManager()
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def get_image(self):
         if self.image:

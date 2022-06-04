@@ -36,12 +36,13 @@ class Visit(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(FilterBy, )
     description = models.TextField(null=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     # best_time_togo = models.TextField(null=True)
     tag = TaggableManager()
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def get_image(self):
         if self.image:

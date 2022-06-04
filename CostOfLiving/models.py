@@ -66,11 +66,12 @@ class CostOfLiving(models.Model):
     deodorant = models.DecimalField(default=0, max_digits=12, decimal_places=0)
     toothpaste = models.DecimalField(default=0, max_digits=12, decimal_places=0)
     toilet = models.DecimalField(default=0, max_digits=12, decimal_places=0)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     tag = TaggableManager()
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def __str__(self):
         q = str(self.city)

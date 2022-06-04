@@ -30,6 +30,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +46,8 @@ INSTALLED_APPS = [
     'djoser',
 
     'taggit',
+    'adminsortable2',
+    'Test',
 
     'Cities',
     'Foods',
@@ -56,7 +61,13 @@ INSTALLED_APPS = [
     'IMAGES',
     'Search',
     'EatPlace',
+
 ]
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
+
+
 CORS_ALLOWED_ORIGINS = [
     "http://stepbook.co",
     "https://stepbook.co",

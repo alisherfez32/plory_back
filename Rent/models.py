@@ -25,10 +25,11 @@ class Rent(models.Model):
     apartment = models.URLField(default='', blank=True)
     house = models.URLField(default='', blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
     tag = TaggableManager()
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def get_image(self):
         if self.image:

@@ -58,10 +58,11 @@ class Countries(models.Model):
     location = models.ForeignKey(Continents, on_delete=models.CASCADE, default='Asia', blank=True)
     capital = models.ForeignKey(ListOfCities, related_name='capital', on_delete=models.CASCADE, )
     list_cities = models.ManyToManyField(ListOfCities, )
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
     tag = TaggableManager()
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('order',)
 
     def save(self, *args, **kwargs):  # new
         self.search = self.tag
@@ -85,10 +86,11 @@ class Cities(models.Model):
     status = models.ForeignKey(AirStatus, related_name='status_of_air', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
     tag = TaggableManager()
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def __str__(self):
         return str(self.name)

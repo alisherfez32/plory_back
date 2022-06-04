@@ -12,10 +12,11 @@ class Images(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     notes = models.TextField(null=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
     tag = TaggableManager()
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def get_image(self):
         if self.image:

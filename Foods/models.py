@@ -38,10 +38,11 @@ class CountryFood(models.Model):
     # price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
     tag = TaggableManager()
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def get_image(self):
         if self.image:

@@ -39,9 +39,10 @@ class EatPlaces(models.Model):
     url = models.URLField()
     date_added = models.DateTimeField(auto_now_add=True)
     tag = TaggableManager()
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     class Meta:
-        ordering = ['-date_added', ]
+        ordering = ['order', ]
 
     def get_image(self):
         if self.image:
