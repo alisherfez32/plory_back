@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from .models import Countries, Cities, ListOfCities, Continents
-from .selializers import CountrySerializer, CitySerializer, CityDetailedSerializer, ContinentSerializer
+from .selializers import CitySerializer, CityDetailedSerializer, ContinentSerializer
 
 
 class ListContinents(APIView):
@@ -23,44 +23,10 @@ class ListCities(APIView):
         return Response(serializer.data)
 
 
-class CountyWithCities(APIView):
-    def get(self, request, format=None):
-        list_countries = Countries.objects.all()
-        serializer = CountrySerializer(list_countries, many=True)
-        return Response(serializer.data)
-
-
-class CountryDetail(APIView):
-    def get_object(self, country_clug):
-        try:
-            return Countries.objects.get(country_slug=country_clug)
-        except Countries.DoesNotExist:
-            raise Http404
-
-    def get(self, request, country_slug, format=None):
-        country = self.get_object(country_slug)
-        serializer = CountrySerializer(country)
-        return Response(serializer.data)
-
-
 class ListCityDetails(APIView):
     def get(self, request, format=None):
         list_detailed_cities = Cities.objects.all()
         serializer = CityDetailedSerializer(list_detailed_cities, many=True)
-        return Response(serializer.data)
-
-
-class CountryCityDetailed(APIView):
-    def get_object(self, country_slug):
-        try:
-            country_name = Countries.objects.get(country_slug=country_slug)
-            return country_name.country.all()
-        except Cities.DoesNotExist:
-            raise Http404
-
-    def get(self, request, country_slug, format=None):
-        city_in_country = self.get_object(country_slug)
-        serializer = CityDetailedSerializer(city_in_country, many=True)
         return Response(serializer.data)
 
 

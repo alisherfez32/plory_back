@@ -11,6 +11,7 @@ urlpatterns = [
     path('api/v1/', include('djoser.urls.authtoken')),
     path('api/v1/', include('Test.urls')),
     path('api/v1/', include('Cities.urls')),
+    path('api/v1/', include('Countries.urls')),
     path('api/v1/', include('Foods.urls')),
     path('api/v1/', include('CostOfLiving.urls')),
     path('api/v1/', include('Transport.urls')),

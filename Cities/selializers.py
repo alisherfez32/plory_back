@@ -22,31 +22,6 @@ class CitySerializer(serializers.ModelSerializer):
         )
 
 
-class CountrySerializer(serializers.ModelSerializer):
-    list_cities = CitySerializer(many=True)
-    capital = serializers.StringRelatedField()
-    location = serializers.StringRelatedField()
-
-    class Meta:
-        model = Countries
-        fields = (
-            "id",
-            "name",
-            "population",
-            "get_absolute_url",
-            "list_cities",
-            "location",
-            "capital",
-        )
-
-    # def create(self, validated_data):
-    #     tracks_data = validated_data.pop('list_cities')
-    #     name = Countries.objects.create(**validated_data)
-    #     for track_data in tracks_data:
-    #         ListOfCities.objects.create(name=name, **track_data)
-    #     return name
-
-
 class CityDetailedSerializer(serializers.ModelSerializer):
     name = serializers.StringRelatedField()
     country = serializers.StringRelatedField()
