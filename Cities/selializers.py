@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Countries, ListOfCities, Continents, Cities
+from .models import ListOfCities, Continents, Cities
 
 
 class ContinentSerializer(serializers.ModelSerializer):

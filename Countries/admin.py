@@ -1,3 +1,12 @@
+from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
+from .models import Countries
 
-# Register your models here.
+
+@admin.register(Countries)
+class CountriesAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ('name', 'continent', 'capital', )
+    list_display_links = ('name', 'continent', 'capital', )
+    list_filter = ('name', 'continent', 'capital', )
+    search_fields = ('name', )
+    # list_editable = ('name', 'location', 'capital', )

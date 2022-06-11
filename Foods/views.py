@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from Cities.models import Countries
+from Countries.models import Countries
 from .models import CountryFood
 from .serializers import FoodsSerializer
 

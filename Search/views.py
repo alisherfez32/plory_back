@@ -7,11 +7,12 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 # Citeis and Countries
-from Cities.models import Countries, Cities
+from Cities.models import Cities
 from Cities.selializers import CityDetailedSerializer
 
 #Countries
 from Countries.serializers import CountrySerializer
+from Countries.models import Countries
 # Apps
 from Apps.models import CountryApps
 from Apps.serializers import CountryAppSerializer

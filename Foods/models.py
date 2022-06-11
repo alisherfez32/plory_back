@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
-from Cities.models import Countries
+from Countries.models import Countries
 from taggit.managers import TaggableManager
 
 
@@ -33,7 +33,7 @@ class CountryFood(models.Model):
     filter_by = models.ManyToManyField(Filters, blank=True, null=True, )
     slug = models.SlugField(blank=True)
     status = models.ForeignKey(Status, null=True, blank=True, on_delete=models.CASCADE)
-    country = models.ForeignKey(Countries, related_name='food', on_delete=models.CASCADE)
+    country = models.ForeignKey(Countries, default=1, related_name='food', on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
     # price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)

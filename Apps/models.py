@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-from Cities.models import Countries
+from Countries.models import Countries
 from django.template.defaultfilters import slugify
 from taggit.managers import TaggableManager
 
@@ -47,7 +47,7 @@ class CommonApps(models.Model):
 
 
 class CountryApps(models.Model):
-    country = models.OneToOneField(Countries, on_delete=models.CASCADE)
+    country = models.OneToOneField(Countries, default=1, on_delete=models.CASCADE)
     slug = models.SlugField(blank=True, default=country)
     date_added = models.DateTimeField(auto_now_add=True)
     apps_for_what = models.TextField(blank=True, null=True, )

@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-from Cities.models import Countries
+from Countries.models import Countries
 from taggit.managers import TaggableManager
 
 
@@ -19,7 +19,7 @@ class TransportStatus(models.Model):
 
 class Transport(models.Model):
     name = models.CharField(max_length=100)
-    country = models.ForeignKey(Countries, related_name='transport', on_delete=models.CASCADE)
+    country = models.ForeignKey(Countries, default=1, related_name='transport', on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
     status = models.ForeignKey(TransportStatus, related_name='transport_status', on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
