@@ -3,12 +3,20 @@ from django.contrib import admin
 from .models import AirStatus, Continents, ListOfCities, Countries, Cities
 
 
+# @admin.register(Countries)
+# class CountriesAdmin(SortableAdminMixin, admin.ModelAdmin):
+#     list_display = ('name', 'location', 'capital', )
+#     list_display_links = ('name', 'location', 'capital', )
+#     list_filter = ('name', 'location', 'capital', )
+#     search_fields = ('name', 'population', )
+#     # list_editable = ('name', 'location', 'capital', )
+
 @admin.register(Countries)
 class CountriesAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('name', 'location', 'capital', )
-    list_display_links = ('name', 'location', 'capital', )
-    list_filter = ('name', 'location', 'capital', )
-    search_fields = ('name', 'population', )
+    list_display = ('name', )
+    list_display_links = ('name', )
+    list_filter = ('name', )
+    search_fields = ('name', )
     # list_editable = ('name', 'location', 'capital', )
 
 

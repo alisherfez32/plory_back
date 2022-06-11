@@ -8,8 +8,10 @@ from rest_framework.decorators import api_view
 
 # Citeis and Countries
 from Cities.models import Countries, Cities
-from Cities.selializers import CountrySerializer, CityDetailedSerializer
+from Cities.selializers import CityDetailedSerializer
 
+#Countries
+from Countries.serializers import CountrySerializer
 # Apps
 from Apps.models import CountryApps
 from Apps.serializers import CountryAppSerializer
