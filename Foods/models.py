@@ -30,7 +30,7 @@ class Status(models.Model):
 
 class CountryFood(models.Model):
     name = models.CharField(max_length=200)
-    filter_by = models.ManyToManyField(Filters, blank=True, null=True, )
+    filter_by = models.ManyToManyField(Filters, blank=True, )
     slug = models.SlugField(blank=True)
     status = models.ForeignKey(Status, null=True, blank=True, on_delete=models.CASCADE)
     country = models.ForeignKey(Countries, default=1, related_name='food', on_delete=models.CASCADE)

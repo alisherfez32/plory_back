@@ -1,5 +1,17 @@
 from rest_framework import serializers
-from .models import ListOfCities, Continents, Cities
+from .models import ListOfCities, Continents, Cities, Airports, Districts
+
+
+class AirportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Airports
+        fields = ("id", "name",)
+
+
+class DistrictSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Districts
+        fields = ("id", "name",)
 
 
 class ContinentSerializer(serializers.ModelSerializer):
@@ -24,8 +36,8 @@ class CitySerializer(serializers.ModelSerializer):
 
 class CityDetailedSerializer(serializers.ModelSerializer):
     name = serializers.StringRelatedField()
-    country = serializers.StringRelatedField()
-    status = serializers.StringRelatedField()
+    airports = AirportSerializer(many=True)
+    districts = DistrictSerializer(many=True)
 
     class Meta:
         model = Cities
@@ -33,10 +45,8 @@ class CityDetailedSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "citi_main_slug",
-            "country",
-            "description",
-            "cost_of_living",
-            "status",
-            "get_image",
+            "cost_of_living", "free_wi_fi", "foreign_friendly", "english_speaking",
+            "airports", "crime_rate",
+            "governor", "population", "area", "districts",
             "get_absolute_url"
         )

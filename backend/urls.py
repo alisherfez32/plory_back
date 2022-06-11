@@ -23,5 +23,6 @@ urlpatterns = [
     path('api/v1/', include('IMAGES.urls')),
     path('api/v1/', include('Search.urls')),
     path('api/v1/', include('EatPlace.urls')),
+    path('api/v1/', include('Z_Meta.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

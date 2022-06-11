@@ -20,7 +20,7 @@ class Filters(models.Model):
 class CommonApps(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(blank=True)
-    filter_by = models.ManyToManyField(Filters, blank=True, null=True, )
+    filter_by = models.ManyToManyField(Filters, blank=True, )
     description = models.TextField(max_length=50)
     url = models.URLField(blank=True)
     ios_url = models.URLField(blank=True, null=True)
