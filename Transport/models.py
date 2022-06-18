@@ -5,15 +5,15 @@ from Countries.models import Countries
 from taggit.managers import TaggableManager
 
 
-class TransportStatus(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+class Filters(models.Model):
+    name = models.CharField(unique=True, max_length=200)
+    used = models.BooleanField(default=False)
+    date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['name', ]
+        ordering = ['-date_added', ]
 
     def __str__(self):
-        if not self.name:
-            return ""
         return self.name
 
 
@@ -21,7 +21,7 @@ class Transport(models.Model):
     name = models.CharField(max_length=100)
     country = models.ForeignKey(Countries, default=1, related_name='transport', on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
-    status = models.ForeignKey(TransportStatus, related_name='transport_status', on_delete=models.CASCADE)
+    filter_by = models.ManyToManyField(Filters, related_name='transport_filter')
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)

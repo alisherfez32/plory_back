@@ -1,7 +1,7 @@
 from django.contrib import admin
 from adminsortable2.admin import SortableAdminMixin
 
-from .models import CommonApps, CountryApps, Filters
+from .models import CommonApps, Filters
 
 
 # class FiltersInline(admin.TabularInline):
@@ -9,7 +9,7 @@ from .models import CommonApps, CountryApps, Filters
 
 
 @admin.register(CommonApps)
-class CountryAppsAdmin(SortableAdminMixin, admin.ModelAdmin):
+class AppsAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('id', 'name', 'description', 'date_added',)
     list_display_links = ('name', 'description', 'date_added',)
     list_filter = ('name', 'date_added',)
@@ -18,5 +18,4 @@ class CountryAppsAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 
 # admin.site.register(SortableAdminMixin, CommonApps, CountryAppsAdmin)
-admin.site.register(CountryApps)
 admin.site.register(Filters)

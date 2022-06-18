@@ -1,9 +1,22 @@
 from rest_framework import serializers
 
-from .models import CommonApps, CountryApps
+from .models import CommonApps, Filters
 
 
-class CommonAppSerializer(serializers.ModelSerializer):
+class FilterSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Filters
+        fields = (
+            "id",
+            "name",
+            "used"
+        )
+
+
+class AppSerializer(serializers.ModelSerializer):
+    filter_by = FilterSerializer(many=True)
+
     class Meta:
         model = CommonApps
 
@@ -15,19 +28,6 @@ class CommonAppSerializer(serializers.ModelSerializer):
             "android_url",
             "description",
             "get_image",
+            "filter_by"
         )
 
-
-class CountryAppSerializer(serializers.ModelSerializer):
-    country = serializers.StringRelatedField()
-    apps_and_websites = CommonAppSerializer(many=True)
-
-    class Meta:
-        model = CountryApps
-
-        fields = (
-            "id",
-            "country",
-            "apps_for_what",
-            "apps_and_websites"
-        )

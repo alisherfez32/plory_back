@@ -1,7 +1,7 @@
 from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 
-from .models import Transport, TransportStatus
+from .models import Transport, Filters
 
 
 @admin.register(Transport)
@@ -13,4 +13,4 @@ class TransportAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 
 # admin.site.register(Transport, TransportAdmin)
-admin.site.register(TransportStatus)
+admin.site.register(Filters)

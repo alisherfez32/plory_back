@@ -8,6 +8,7 @@ from taggit.managers import TaggableManager
 
 class Filters(models.Model):
     name = models.CharField(unique=True, max_length=200)
+    used = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -19,8 +20,8 @@ class Filters(models.Model):
 
 class CommonApps(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    country = models.ForeignKey(Countries, related_name='apps_in_ct', on_delete=models.CASCADE)
     slug = models.SlugField(blank=True)
-    filter_by = models.ManyToManyField(Filters, blank=True, )
     description = models.TextField(max_length=50)
     url = models.URLField(blank=True)
     ios_url = models.URLField(blank=True, null=True)
@@ -28,6 +29,8 @@ class CommonApps(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    filter_by = models.ManyToManyField(Filters, blank=True, )
+    tag = TaggableManager()
 
     class Meta:
         ordering = ['order', ]
@@ -44,24 +47,3 @@ class CommonApps(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
-
-
-class CountryApps(models.Model):
-    country = models.OneToOneField(Countries, default=1, on_delete=models.CASCADE)
-    slug = models.SlugField(blank=True, default=country)
-    date_added = models.DateTimeField(auto_now_add=True)
-    apps_for_what = models.TextField(blank=True, null=True, )
-    apps_and_websites = models.ManyToManyField(CommonApps, )
-    tag = TaggableManager()
-
-    class Meta:
-        ordering = ['-date_added', ]
-
-    def save(self, *args, **kwargs):  # new
-        if not self.slug:
-            self.slug = slugify(self.country)
-        return super().save(*args, **kwargs)
-
-    def __str__(self):
-        return str(self.country)
-

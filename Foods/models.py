@@ -7,6 +7,7 @@ from taggit.managers import TaggableManager
 
 class Filters(models.Model):
     name = models.CharField(unique=True, max_length=200)
+    used = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -16,23 +17,14 @@ class Filters(models.Model):
         return self.name
 
 
-class Status(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-
-    class Meta:
-        ordering = ['name', ]
-
-    def __str__(self):
-        if not self.name:
-            return ""
-        return self.name
+def get_first_model1():
+    return Filters.objects.first()
 
 
 class CountryFood(models.Model):
     name = models.CharField(max_length=200)
-    filter_by = models.ManyToManyField(Filters, blank=True, )
+    filter_by = models.ManyToManyField(Filters, related_name='filter_foods', default=get_first_model1, )
     slug = models.SlugField(blank=True)
-    status = models.ForeignKey(Status, null=True, blank=True, on_delete=models.CASCADE)
     country = models.ForeignKey(Countries, default=1, related_name='food', on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
     # price = models.DecimalField(max_digits=6, decimal_places=2)

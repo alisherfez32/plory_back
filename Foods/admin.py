@@ -1,7 +1,7 @@
 from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 
-from .models import CountryFood, Status, Filters
+from .models import CountryFood, Filters
 
 
 @admin.register(CountryFood)
@@ -13,5 +13,4 @@ class CountryFoodAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 
 # admin.site.register(CountryFood, CountryFoodAdmin)
-admin.site.register(Status)
 admin.site.register(Filters)

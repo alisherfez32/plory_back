@@ -14,8 +14,6 @@ from Cities.selializers import CityDetailedSerializer
 from Countries.serializers import CountrySerializer
 from Countries.models import Countries
 # Apps
-from Apps.models import CountryApps
-from Apps.serializers import CountryAppSerializer
 
 # Cost Of Living
 from CostOfLiving.models import CostOfLiving
