@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
 
-# DEBUG = False
+# DEBUG = True
 
 if DEBUG:
     MEDIA_HOST = "http://127.0.0.1:8000"
