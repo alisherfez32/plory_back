@@ -5,8 +5,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .models import Images
-from .serializers import ImageSerializer
+from .models import Images, Filters
+from .serializers import ImageSerializer, FilterSerializer
+
+
+class ListFilter(APIView):
+    def get(self, request, format=None):
+        filters = Filters.objects.all()
+        serializer = FilterSerializer(filters, many=True)
+        return Response(serializer.data)
 
 
 class AllImages(APIView):
@@ -44,3 +51,32 @@ class CityImages(APIView):
         serializer = ImageSerializer(images_in_country, many=True)
         return Response(serializer.data)
 
+
+@api_view(['POST'])
+def filter_by(request, city_slug):
+    filters = request.data.get('filter_by', [])
+    q = city_slug.capitalize()
+    filtered_images = Images.objects.filter(city__name=q)
+
+    for str in filters:
+        b = str.capitalize()
+        filtered_images = filtered_images.filter(filter_by__name=b)
+
+    filter_serializer = ImageSerializer(filtered_images, many=True)
+
+    return Response(filter_serializer.data)
+
+
+@api_view(['POST'])
+def filter_by_country(request, country_slug):
+    filters = request.data.get('filter_by', [])
+    q = country_slug.capitalize()
+    filtered_country_images = Images.objects.filter(country__name=q)
+
+    for str in filters:
+        b = str.capitalize()
+        filtered_country_images = filtered_country_images.filter(filter_by__name=b)
+
+    filter_serializer = ImageSerializer(filtered_country_images, many=True)
+
+    return Response(filter_serializer.data)

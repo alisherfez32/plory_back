@@ -1,6 +1,17 @@
 from rest_framework import serializers
 
-from .models import Images
+from .models import Images, Filters
+
+
+class FilterSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Filters
+        fields = (
+            "id",
+            "name",
+            "used"
+        )
 
 
 class ImageSerializer(serializers.ModelSerializer):

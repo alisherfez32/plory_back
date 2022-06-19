@@ -16,8 +16,8 @@ from Countries.models import Countries
 # Apps
 
 # Cost Of Living
-from CostOfLiving.models import CostOfLiving
-from CostOfLiving.serializers import CostOfLivingsSerializer
+# from CostOfLiving.models import Costs
+# from CostOfLiving.serializers import CostOfLivingsSerializer
 
 # Foods
 from Foods.models import CountryFood
@@ -56,7 +56,7 @@ def search(request):
         countries = Countries.objects.filter(Q(tag__name=query))
         cities = Cities.objects.filter(Q(tag__name=query))
         # apps = CountryApps.objects.filter(Q(tag__name=query))
-        costs = CostOfLiving.objects.filter(Q(tag__name=query))
+        # costs = CostOfLiving.objects.filter(Q(tag__name=query))
         foods = CountryFood.objects.filter(Q(tag__name=query))
         # languages = Languages.objects.filter(Q(tag__name=query))
         rents = Rent.objects.filter(Q(tag__name=query))
@@ -67,7 +67,7 @@ def search(request):
         ct_serializer = CountrySerializer(countries, many=True)
         city_serializer = CityDetailedSerializer(cities, many=True)
         # app_serializer = CountryAppSerializer(apps, many=True)
-        cost_serializer = CostOfLivingsSerializer(costs, many=True)
+        # cost_serializer = CostOfLivingsSerializer(costs, many=True)
         food_serializer = FoodsSerializer(foods, many=True)
         # lang_srz = LanguageSerializer(languages, many=True)
         rent_srz = RentSerializer(rents, many=True)
@@ -79,7 +79,7 @@ def search(request):
             "countries": ct_serializer.data,
             "cities": city_serializer.data,
             # "apps": app_serializer.data,
-            "costs": cost_serializer.data,
+            # "costs": cost_serializer.data,
             "foods": food_serializer.data,
             # "langs": lang_srz.data,
             "rents": rent_srz.data,

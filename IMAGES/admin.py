@@ -1,7 +1,7 @@
 from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 
-from .models import Images
+from .models import Images, Filters
 
 
 @admin.register(Images)
@@ -12,4 +12,4 @@ class ImagesAdmin(SortableAdminMixin, admin.ModelAdmin):
     search_fields = ('name', 'notes', 'date_added')
 
 
-# admin.site.register(Images, ImagesAdmin)
+admin.site.register(Filters)

@@ -1,7 +1,7 @@
 from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 
-from .models import Visit, FilterBy, District
+from .models import Visit, Filters, District
 
 
 @admin.register(Visit)
@@ -12,6 +12,6 @@ class VisitAdmin(SortableAdminMixin, admin.ModelAdmin):
     search_fields = ('name', 'entry_fee', 'description')
 
 
-admin.site.register(FilterBy)
+admin.site.register(Filters)
 # admin.site.register(Visit, VisitAdmin)
 admin.site.register(District)

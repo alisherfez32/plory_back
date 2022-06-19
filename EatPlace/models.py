@@ -9,6 +9,7 @@ from taggit.managers import TaggableManager
 
 class Filters(models.Model):
     name = models.CharField(unique=True, max_length=200)
+    used = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
