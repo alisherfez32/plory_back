@@ -17,12 +17,12 @@ SECRET_KEY = 'django-insecure-!4@is-xp5+mfc^ign&hgit0z2_r7o$n7manz=_o3e7o*76)9=@
 
 # DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
-    MEDIA_HOST = "http://127.0.0.1:8000"
+    MEDIA_HOST = "http://18.195.66.145"
 else:
-    MEDIA_HOST = "https://stepbook.herokuapp.com"
+    MEDIA_HOST = "http://18.195.66.145"
 
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split('')
 
