@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-!4@is-xp5+mfc^ign&hgit0z2_r7o$n7manz=_o3e7o*76)9=@
 
 # DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     MEDIA_HOST = "http://18.195.66.145"
@@ -25,8 +25,8 @@ else:
     MEDIA_HOST = "http://18.195.66.145"
 
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split('')
-
-ALLOWED_HOSTS = ['18.156.129.57', '18.195.66.145', 'stepbook.co']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['127.0.0.1', '18.156.129.57', '18.195.66.145', 'stepbook.co']
 # Application definition
 
 INSTALLED_APPS = [
