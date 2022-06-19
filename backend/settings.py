@@ -24,9 +24,9 @@ if DEBUG:
 else:
     MEDIA_HOST = "http://18.195.66.145"
 
-# ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split('')
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split('')
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
