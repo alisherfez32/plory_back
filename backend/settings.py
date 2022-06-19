@@ -15,14 +15,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
+DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
 
-DEBUG = False
+# DEBUG = False
 
 if DEBUG:
     MEDIA_HOST = "http://127.0.0.1:8000"
 else:
-    MEDIA_HOST = "http://18.195.66.145"
+    MEDIA_HOST = "http://18.184.201.184"
 
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split('')
 ALLOWED_HOSTS = ['*']
