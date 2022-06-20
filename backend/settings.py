@@ -22,7 +22,7 @@ DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
 if DEBUG:
     MEDIA_HOST = "http://127.0.0.1:8000"
 else:
-    MEDIA_HOST = "http://18.184.201.184"
+    MEDIA_HOST = "http://54.87.118.6"
 
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split('')
 ALLOWED_HOSTS = ['*']
